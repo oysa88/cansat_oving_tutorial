@@ -1,3 +1,9 @@
+---
+title: "CanSat Øvingsoppgaver"
+description: "En MakeCode-tutorial"
+allowBlocks: "*"
+filterBlocks: false
+---
 
 # CanSat Øvinger Tutorial
 
