@@ -1,6 +1,6 @@
 ---
-title: "CanSat Øvingsoppgaver"
-description: "En MakeCode-tutorial"
+title: "CanSat Øvinger"
+description: "Øvingsoppgaver for CanSat med micro:bit"
 allowBlocks: "*"
 filterBlocks: false
 ---
