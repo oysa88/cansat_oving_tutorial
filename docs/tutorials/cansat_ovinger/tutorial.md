@@ -3,6 +3,7 @@ title: "CanSat Øvinger"
 description: "Øvingsoppgaver for CanSat med micro:bit"
 allowBlocks: "*"
 filterBlocks: false
+noFilter: true
 ---
 
 # CanSat Øvinger Tutorial
