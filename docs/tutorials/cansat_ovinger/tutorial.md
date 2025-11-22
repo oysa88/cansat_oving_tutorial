@@ -1,3 +1,10 @@
+---
+title: "CanSat Øvinger"
+description: "Øvingsoppgaver for CanSat med micro:bit"
+allowBlocks: "*"
+filterBlocks: false
+---
+
 # CanSat Øvinger Tutorial
 
 ### @diffs true
