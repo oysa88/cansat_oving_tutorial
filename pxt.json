@@ -1,5 +1,6 @@
 {
     "name": "cansat_oving_tutorial_NY",
+    "version": "1.0.0",
     "description": "",
     "dependencies": {
         "core": "*",
