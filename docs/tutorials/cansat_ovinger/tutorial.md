@@ -519,3 +519,93 @@ pxt-kitronik-128x64display=github:kitronikltd/pxt-kitronik-128x64display
 BMP280=github:microbit-makecode-packages/BME280
 barometric-height=github:oysa88/barometric-height
 ```
+
+```ghost
+// BASIC
+basic.showString("Hello")
+basic.showNumber(1)
+basic.pause(100)
+basic.clearScreen()
+
+// INPUT
+input.onButtonPressed(Button.A, function () {})
+input.acceleration(Dimension.X)
+input.lightLevel()
+input.onGesture(Gesture.Shake, function () {})
+
+// MUSIC
+music.playTone(262, music.beat(BeatFraction.Whole))
+music.playMelody("C D E F G A B C5", 120)
+music.stopAllSounds()
+
+// LED
+led.plot(0, 0)
+led.unplot(1, 1)
+led.toggle(2, 2)
+led.brightness()
+
+// RADIO
+radio.setGroup(1)
+radio.sendNumber(7)
+radio.receiveNumber()
+radio.sendString("Hi")
+radio.receiveString()
+
+// LOOPS
+for (let i = 0; i < 2; i++) {}
+while (true) {}
+
+// LOGIC
+if (true) {}
+true || false
+
+// VARIABLES
+let x = 0
+x += 1
+
+// MATH
+Math.randomRange(0, 10)
+Math.map(5, 0, 10, 0, 100)
+
+// FUNCTIONS
+function test() {}
+test()
+
+// PINS
+pins.analogReadPin(AnalogPin.P0)
+pins.analogWritePin(AnalogPin.P1, 1023)
+pins.digitalReadPin(DigitalPin.P1)
+pins.digitalWritePin(DigitalPin.P2, 1)
+pins.servoWritePin(AnalogPin.P0, 90)
+
+// CONTROL
+control.reset()
+control.waitMicros(100)
+control.inBackground(function () {})
+
+// SERIAL
+serial.writeLine("Hello")
+serial.readString()
+
+// IMAGES
+images.createImage(`
+. . . . .
+. . . . .
+. . # . .
+. . . . .
+. . . . .
+`)
+images.iconImage(IconNames.Heart)
+
+// GAME (til micro:bit V2 Extensions)
+game.createSprite(2, 2)
+game.score()
+
+// NEOPIXELS (vanlig extension)
+let strip = neopixel.create(DigitalPin.P0, 5, NeoPixelMode.RGB)
+strip.showColor(neopixel.colors(NeoPixelColors.Red))
+strip.show()
+
+// DATETIME (klokke tilbehør)
+control.eventTimestamp()
+```
