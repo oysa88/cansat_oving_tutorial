@@ -521,91 +521,315 @@ barometric-height=github:oysa88/barometric-height
 ```
 
 ```ghost
-// BASIC
-basic.showString("Hello")
-basic.showNumber(1)
-basic.pause(100)
+// ---------------------------
+// BASIC / DISPLAY
+// ---------------------------
+basic.showString("Hei")
+basic.showNumber(123)
 basic.clearScreen()
+basic.pause(200)
+basic.showIcon(IconNames.Happy)
+basic.showLeds(`
+. . # . .
+. # . # .
+# . . . #
+. # . # .
+. . # . .
+`)
 
-// INPUT
-input.onButtonPressed(Button.A, function () {})
-input.acceleration(Dimension.X)
-input.lightLevel()
-input.onGesture(Gesture.Shake, function () {})
+// on start / forever
+basic.forever(function () {
+    basic.pause(1000)
+})
 
-// MUSIC
-music.playTone(262, music.beat(BeatFraction.Whole))
-music.playMelody("C D E F G A B C5", 120)
+// ---------------------------
+// INPUT / EVENTS / SENSORS
+// ---------------------------
+input.onButtonPressed(Button.A, function () {
+    basic.showString("A")
+})
+input.onButtonPressed(Button.B, function () {
+    basic.showString("B")
+})
+input.onButtonPressed(Button.AB, function () {
+    basic.showString("AB")
+})
+if (input.buttonIsPressed(Button.A)) {
+    basic.showString("pressed")
+}
+input.onGesture(Gesture.Shake, function () {
+    basic.showString("Shake")
+})
+if (input.isGesture(Gesture.LogoUp)) {
+    basic.showString("LogoUp")
+}
+input.onPinPressed(TouchPin.P0, function () {
+    basic.showString("P0")
+})
+input.onPinReleased(TouchPin.P0, function () {
+    basic.showString("P0 up")
+})
+if (input.pinIsPressed(TouchPin.P0)) {
+    basic.showString("pin")
+}
+let ax = input.acceleration(Dimension.X)
+let ay = input.acceleration(Dimension.Y)
+let az = input.acceleration(Dimension.Z)
+let heading = input.compassHeading()
+let tempC = input.temperature()
+let light = input.lightLevel()
+let rotationPitch = input.rotation(Rotation.Pitch)
+let rotationYaw = input.rotation(Rotation.Yaw)
+let magneticX = input.magneticForce(Dimension.X)
+
+// ---------------------------
+// MUSIC / SOUND
+// ---------------------------
+music.playTone(262, music.beat(BeatFraction.Half))
+music.startMelody(music.builtInMelody(Melodies.Entertainer), MelodyOptions.Once)
 music.stopAllSounds()
+music.playMelody("C D E F G A B C5", 120)
+music.ringTone(440)
+music.rest(music.beat(BeatFraction.Quarter))
 
-// LED
-led.plot(0, 0)
-led.unplot(1, 1)
-led.toggle(2, 2)
-led.brightness()
-
-// RADIO
-radio.setGroup(1)
-radio.sendNumber(7)
-radio.receiveNumber()
-radio.sendString("Hi")
-radio.receiveString()
-
-// LOOPS
-for (let i = 0; i < 2; i++) {}
-while (true) {}
-
-// LOGIC
-if (true) {}
-true || false
-
-// VARIABLES
-let x = 0
-x += 1
-
-// MATH
-Math.randomRange(0, 10)
-Math.map(5, 0, 10, 0, 100)
-
-// FUNCTIONS
-function test() {}
-test()
-
-// PINS
-pins.analogReadPin(AnalogPin.P0)
-pins.analogWritePin(AnalogPin.P1, 1023)
-pins.digitalReadPin(DigitalPin.P1)
-pins.digitalWritePin(DigitalPin.P2, 1)
-pins.servoWritePin(AnalogPin.P0, 90)
-
-// CONTROL
-control.reset()
-control.waitMicros(100)
-control.inBackground(function () {})
-
-// SERIAL
-serial.writeLine("Hello")
-serial.readString()
-
-// IMAGES
-images.createImage(`
+// ---------------------------
+// LED / IMAGES
+// ---------------------------
+images.createBigImage(`
+# # # # #
+# . . . #
+# . . . #
+# . . . #
+# # # # #
+`)
+images.createBigImage(`
 . . . . .
+. . # . .
+. # . # .
+# . . . #
+. . . . .
+`)
+images.iconImage(IconNames.Heart)
+let img = images.createImage(`
 . . . . .
 . . # . .
 . . . . .
 . . . . .
+. . . . .
 `)
+img.showImage(0)
+img.scrollImage(1, 200)
+
+// ---------------------------
+// RADIO
+// ---------------------------
+radio.setGroup(1)
+radio.sendNumber(42)
+radio.sendString("hei")
+radio.onReceivedNumber(function (n: number) {
+    basic.showNumber(n)
+})
+radio.onReceivedString(function (s: string) {
+    basic.showString(s)
+})
+
+// ---------------------------
+// LOOPS
+// ---------------------------
+for (let i = 0; i < 5; i++) {
+    basic.showNumber(i)
+}
+let j = 0
+while (j < 3) {
+    basic.showNumber(j)
+    j++
+}
+do {
+    basic.showString("do")
+} while (false)
+
+// ---------------------------
+// LOGIC (inkl. sammenligninger)
+// ---------------------------
+// sammenligninger og logiske operatorer
+let a = 5
+let b = 3
+if (a == b) {
+    basic.showString("eq")
+} else if (a != b) {
+    basic.showString("neq")
+}
+if (a < b) {
+    basic.showString("lt")
+}
+if (a <= b) {
+    basic.showString("le")
+}
+if (a > b) {
+    basic.showString("gt")
+}
+if (a >= b) {
+    basic.showString("ge")
+}
+if ((a > 0 && b > 0) || !(a == 0)) {
+    basic.showString("logic")
+}
+
+// switch-style (use if/else ladder)
+if (a == 1) {
+    basic.showString("one")
+} else if (a == 2) {
+    basic.showString("two")
+} else {
+    basic.showString("other")
+}
+
+// ---------------------------
+// VARIABLES / ARRAYS
+// ---------------------------
+let x = 0
+let text = "hei"
+x = x + 1
+let arr: number[] = [1, 2, 3]
+arr.push(4)
+let v = arr[0]
+arr.setAt(1, 9)
+let len = arr.length
+
+// ---------------------------
+// MATH / RANDOM / MAP
+// ---------------------------
+let r = Math.randomRange(0, 10)
+let mapped = Math.map(5, 0, 10, 0, 100)
+let floored = Math.floor(3.7)
+let rounded = Math.round(3.3)
+let absVal = Math.abs(-5)
+let minv = Math.min(1, 2)
+let maxv = Math.max(1, 2)
+let powv = Math.pow(2, 3)
+
+// ---------------------------
+// STRINGS
+// ---------------------------
+let s1 = "Hei"
+let s2 = "Verden"
+let s3 = s1 + " " + s2
+let slen = s3.length
+let substr = s3.substr(0, 3)
+let cmp = s1.compare("Hei") // "" .compare in MakeCode API
+
+// ---------------------------
+// FUNCTIONS / PROCEDURES
+// ---------------------------
+function myFunc(n: number): number {
+    basic.showNumber(n)
+    return n + 1
+}
+myFunc(5)
+
+let anon = function () {
+    basic.showString("anon")
+}
+anon()
+
+// ---------------------------
+// CONTROL (timing, background, reset)
+// ---------------------------
+control.reset()
+control.waitMicros(100)
+control.inBackground(function () {
+    basic.pause(100)
+})
+
+// ---------------------------
+// SERIAL
+// ---------------------------
+serial.writeLine("Hello")
+serial.writeValue("temp", tempC)
+let s = serial.readLine()
+
+// ---------------------------
+// PINS (digital, analog, servo, I2C comments)
+// ---------------------------
+pins.digitalWritePin(DigitalPin.P0, 1)
+let d = pins.digitalReadPin(DigitalPin.P1)
+pins.analogWritePin(AnalogPin.P0, 512)
+let a0 = pins.analogReadPin(AnalogPin.P0)
+pins.servoWritePin(AnalogPin.P0, 90)
+pins.setPull(DigitalPin.P1, PinPullMode.PullUp)
+// i2c example (extension/device dependent)
+// pins.i2cWriteNumber(...)
+
+// ---------------------------
+// GAME (score, sprites) 
+// ---------------------------
+game.setScore(10)
+let sprite = game.createSprite(2, 2)
+sprite.move(1)
+sprite.turn(Direction.Right)
+sprite.ifOnEdgeBounce()
+game.gameOver()
+
+// ---------------------------
+// USB / DEVICE / BLUETOOTH (hooks)
+// ---------------------------
+bluetooth.startAccelerometerService()
+bluetooth.onBluetoothConnected(function () {
+    basic.showIcon(IconNames.Yes)
+})
+bluetooth.onBluetoothDisconnected(function () {
+    basic.showIcon(IconNames.No)
+})
+
+// ---------------------------
+// IMAGES / ICONS / ANIMATIONS
+// ---------------------------
 images.iconImage(IconNames.Heart)
+images.createBigImage(`
+. # # # .
+# . . . #
+# . . . #
+# . . . #
+. # # # .
+`)
+images.animation.pause(100)
 
-// GAME (til micro:bit V2 Extensions)
-game.createSprite(2, 2)
-game.score()
-
-// NEOPIXELS (vanlig extension)
-let strip = neopixel.create(DigitalPin.P0, 5, NeoPixelMode.RGB)
+// ---------------------------
+// EXTENSIONS: Neopixel / Dallas / Servo / GPS etc.
+// (NB: disse krever at extension er lagt til i prosjektet)
+// ---------------------------
+// NEOPIXEL (install neoPixel extension for these blocks)
+let strip = neopixel.create(DigitalPin.P0, 8, NeoPixelMode.RGB)
+strip.showRainbow(1, 360)
+strip.setBrightness(32)
 strip.showColor(neopixel.colors(NeoPixelColors.Red))
+strip.rotate(1)
 strip.show()
 
-// DATETIME (klokke tilbehør)
-control.eventTimestamp()
+// DALLAS (1-wire) - extension dependent
+// dallas.queryAll()
+
+// SERVO via pins (already above)
+// GPS / RTC / Other extensions - include sample calls if extension added
+
+// ---------------------------
+// RADIO advanced
+// ---------------------------
+radio.setTransmitPower(7)
+radio.setFrequencyBand(7)
+radio.onReceivedValue(function (name: string, value: number) {
+    serial.writeValue(name, value)
+})
+
+// ---------------------------
+// EXTRAS: control events, timestamp, running time
+// ---------------------------
+let t = input.runningTime()
+let ts = control.eventTimestamp()
+
+// ---------------------------
+// Ghost end marker
+// ---------------------------
+basic.clearScreen()
+
 ```
