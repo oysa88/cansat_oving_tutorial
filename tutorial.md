@@ -514,12 +514,6 @@ function høyde () {
 ```
 
 
-```package
-pxt-kitronik-128x64display=github:kitronikltd/pxt-kitronik-128x64display
-BMP280=github:microbit-makecode-packages/BME280
-barometric-height=github:oysa88/barometric-height
-```
-
 ```ghost
 // ---------------------------
 // BASIC / DISPLAY
@@ -832,4 +826,12 @@ let ts = control.eventTimestamp()
 // ---------------------------
 basic.clearScreen()
 
+```
+
+
+
+```package
+pxt-kitronik-128x64display=github:kitronikltd/pxt-kitronik-128x64display
+BMP280=github:microbit-makecode-packages/BME280
+barometric-height=github:oysa88/barometric-height
 ```
