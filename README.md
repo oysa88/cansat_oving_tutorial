@@ -1,5 +1,8 @@
 
 > Åpne denne siden på [https://oysa88.github.io/cansat_oving_tutorial/](https://oysa88.github.io/cansat_oving_tutorial/)
+## Åpne Tutorial
+
+https://makecode.microbit.org/#tutorial:github:oysa88/cansat_oving_tutorial/tutorial
 
 ## Bruk som utvidelse
 
