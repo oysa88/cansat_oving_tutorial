@@ -515,65 +515,57 @@ function høyde () {
 
 
 ```ghost
-// basis blokker
+//
+// BASIC
+//
 basic.showNumber(0)
+basic.showString("A")
+basic.showIcon(IconNames.Heart)
+basic.showArrow(ArrowNames.North)
+basic.clearScreen()
+basic.pause(100)
 basic.showLeds(`
 . . . . .
-. . . . .
+. . # . .
+. # # # .
 . . # . .
 . . . . .
-. . . . .
 `)
-basic.showIcon(IconNames.Heart)
-basic.showString("Hello!")
-basic.clearScreen()
-basic.forever(function () {
+basic.forever(function () {})
 
-})
-basic.pause(100)
-basic.showArrow(ArrowNames.North)
-
-// inndata blokker
-input.onButtonPressed(Button.A, function () {
-
-})
-input.onGesture(Gesture.Shake, function () {
-
-})
-input.onPinPressed(TouchPin.P0, function () {
-
-})
+//
+// INPUT
+//
+input.onButtonPressed(Button.A, function () {})
 input.buttonIsPressed(Button.A)
+input.onGesture(Gesture.Shake, function () {})
+input.isGesture(Gesture.LogoDown)
 input.acceleration(Dimension.X)
-input.pinIsPressed(TouchPin.P0)
 input.lightLevel()
-input.compassHeading()
 input.temperature()
-input.isGesture(Gesture.Shake)
-input.onSound(DetectedSound.Loud, function () {
-
-})
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-
-})
-input.logoIsPressed()
-input.soundLevel()
-input.calibrateCompass()
-input.magneticForce(Dimension.X)
 input.rotation(Rotation.Pitch)
 input.runningTime()
 input.runningTimeMicros()
-input.onPinReleased(TouchPin.P0, function () {
-
-})
+input.onPinPressed(TouchPin.P0, function () {})
+input.pinIsPressed(TouchPin.P0)
+input.onPinReleased(TouchPin.P1, function () {})
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {})
+input.logoIsPressed()
+input.soundLevel()
+input.onSound(DetectedSound.Loud, function () {})
+input.magneticForce(Dimension.X)
+input.compassHeading()
+input.calibrateCompass()
 input.setAccelerometerRange(AcceleratorRange.OneG)
-input.setSoundThreshold(SoundThreshold.Loud, 128)
+input.setSoundThreshold(SoundThreshold.Loud, 100)
 
-//musikk blokker
-music.play(music.stringPlayable("", 120), music.PlaybackMode.UntilDone)
-music.play(music.tonePlayable(Note.C, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
-music.ringTone(Note.C)
-music.rest(music.beat(BeatFraction.Whole))
+//
+// MUSIC
+//
+music.playTone(262, music.beat(BeatFraction.Whole))
+music.ringTone(440)
+music.rest(music.beat(BeatFraction.Half))
+music.playMelody("C D E F G A B C5", 120)
 music.setVolume(127)
 music.volume()
 music.stopAllSounds()
@@ -581,93 +573,79 @@ music.changeTempoBy(20)
 music.setTempo(120)
 music.beat(BeatFraction.Whole)
 music.tempo()
-music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Dadadadum), music.PlaybackMode.InBackground)
-music.stopMelody(MelodyStopOptions.All)
-music.onEvent(MusicEvent.MelodyNotePlayed, function () {
-
-})
-music.play(music.builtinPlayableSoundEffect(soundExpression.giggle), music.PlaybackMode.UntilDone)
-music.createSoundExpression(WaveShape.Sine, 5000, 0, 255, 0, 500, SoundExpressionEffect.None, InterpolationCurve.Linear)
 music.isSoundPlaying()
+music.play(music.stringPlayable("C5 B A G", 120), music.PlaybackMode.UntilDone)
+music.play(music.tonePlayable(Note.C, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
 music.setBuiltInSpeakerEnabled(false)
 
-//skjerm blokker
-led.plot(0, 0)
-led.toggle(0, 0)
-led.unplot(0, 0)
+//
+// LED
+//
+led.plot(0,0)
+led.unplot(1,1)
+led.toggle(2,2)
 led.point(0, 0)
-led.plotBarGraph(0, 0)
-led.plotBrightness(0, 0, 255)
 led.pointBrightness(0, 0)
+led.plotBrightness(0, 0, 255)
 led.brightness()
-led.setBrightness(255)
-led.enable(false)
+led.setBrightness(200)
+led.plotBarGraph(3, 10)
 led.stopAnimation()
-led.setDisplayMode(DisplayMode.BlackAndWhite)
+led.enable(true)
 
-//radio blokker
+//
+// RADIO
+//
 radio.setGroup(1)
-radio.sendNumber(0)
-radio.sendValue("name", 0)
-radio.sendString("")
-radio.onReceivedNumber(function (receivedNumber: number) {
-
-})
-radio.onReceivedValue(function (name: string, value: number) {
-
-})
-radio.onReceivedString(function (receivedString: string) {
-
-})
+radio.sendNumber(7)
+radio.sendString("Hi")
+radio.sendValue("x", 10)
+radio.onReceivedNumber(function (n) {})
+radio.onReceivedString(function (s) {})
+radio.onReceivedValue(function (name, value) {})
 radio.receivedPacket(RadioPacketProperty.SignalStrength)
 radio.setTransmitPower(7)
-radio.setTransmitSerialNumber(true)
 radio.setFrequencyBand(0)
-radio.raiseEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_EVT_ANY)
+radio.setTransmitSerialNumber(true)
 
-//løkker blokker
-while (true) {
+//
+// LOOPS (control)
+//
+while (true) {}
+for (let i = 0; i < 5; i++) {}
+for (let value of [1,2,3]) {}
+loops.everyInterval(500, function () {})
 
-}
-let tabell: number[] = []
-for (let verdi of tabell) {
-
-}
-for (let i = 0; i < 5; i++) {
-
-}
-for (let index = 0; index < 4; index++) {
-    continue;
-    break;
-}
-loops.everyInterval(500, function () {
-
-})
-
-//Logikk blokker
-if (true) {
-
-}
-if (true) {
-
-} else {
-
-}
-true && true
+//
+// LOGIC
+//
+if (true) {}
+if (true) {} else {}
+true && false
 true || false
 !true
 0 == 0
-1 != 1
+0 != 1
 0 < 1
 0 <= 1
 0 > 1
 0 >= 1
 "" == ""
+"" != ""
 
-//variabler blokker
+//
+// VARIABLES
+//
+let numberVar = 0
+let stringVar = ""
+let booleanVar = false
+numberVar += 1
+stringVar = "text"
+booleanVar = true
 
-
-//matematikk blokker
+//
+// MATH
+//
 1 + 1
 1 - 1
 1 * 1
@@ -675,184 +653,138 @@ true || false
 1 % 2
 Math.max(1, 2)
 Math.min(1, 2)
-Math.abs(-1)
-Math.sqrt(4)
-Math.sin(0)
-Math.cos(0)
-Math.tan(0)
-Math.asin(0)
-Math.acos(0)
-Math.atan2(0, 0)
+Math.abs(-5)
+Math.sqrt(16)
 Math.round(1.2)
-Math.ceil(1.2)
-Math.floor(1.2)
-Math.trunc(1.2)
+Math.floor(1.8)
+Math.ceil(1.1)
+Math.trunc(1.7)
 Math.randomBoolean()
 randint(0, 10)
-Math.constrain(0, 0, 0)
-Math.map(0, 0, 1023, 0, 4)
+Math.map(5, 0, 10, 0, 100)
+Math.constrain(5, 0, 10)
 Math.PI
 
-//funksjoner blokker
-doSomething()
-function doSomething() {
+//
+// FUNCTIONS
+//
+function myFunction() {}
+myFunction()
 
-}
+//
+// LISTS (arrays)
+//
+let list = [1, 2, 3]
+list.push(4)
+list.pop()
+list.insertAt(0, 99)
+list.removeAt(1)
+list.length
+list.reverse()
+list.indexOf(2)
 
-//tabeller blokker
-let tabell2 = [1, 2, 3]
-let teksttabell = ["ei / en / ett", "b", "c"]
-tabell.length
-tabell[0]
-tabell[0] = 1
-tabell.push(1)
-tabell.pop()
-
-//tekst blokker
-"".charAt(0)
-"".substr(0, 0)
+//
+// TEXT
+//
+"Hello".charAt(0)
+"Hello".substr(0, 2)
+"Hi" + "There"
 parseInt("5")
-"".compare("")
-"" + 5
-"".length
+"abc".compare("abd")
+"abc".length
 
-//spill blokker
-game.createSprite(2, 2)
-sprite.delete()
-mySprite.isDeleted()
-mySprite.move(1)
-mySprite.turn(Direction.Right, 45)
-mySprite.change(LedSpriteProperty.X, 1)
-mySprite.set(LedSpriteProperty.X, 0)
-mySprite.get(LedSpriteProperty.X)
-mySprite.isTouching(null)
-mySprite.isTouchingEdge()
-mySprite.ifOnEdgeBounce()
-game.removeLife(0)
-game.addLife(0)
-game.setLife(0)
-game.setScore(0)
+//
+// GAME
+//
+let sprite = game.createSprite(2,2)
+sprite.move(1)
+sprite.turn(Direction.Right, 45)
+sprite.change(LedSpriteProperty.X, 1)
+sprite.set(LedSpriteProperty.Y, 4)
+sprite.get(LedSpriteProperty.X)
+sprite.ifOnEdgeBounce()
+sprite.isDeleted()
 game.addScore(1)
-game.startCountdown(10000)
 game.score()
+game.setScore(0)
 game.gameOver()
-game.isGameOver()
-game.isPaused()
-game.isRunning()
-game.resume()
-game.pause()
+game.startCountdown(5000)
 
-//bilder blokker
-myImage.showImage(0)
-myImage.scrollImage(1, 200)
-images.createImage(`
-. . . . .
-. . . . .
+//
+// IMAGES
+//
+let img = images.createImage(`
+. # . # .
 . . # . .
-. . . . .
-. . . . .
-`)
-images.createBigImage(`
-. . . . .
-. . . . .
+# # # # #
 . . # . .
-. . . . .
-. . . . .
+. # . # .
 `)
+img.showImage(0)
+img.scrollImage(1, 200)
 images.iconImage(IconNames.Heart)
 
-
-//tikobling blokker
-pins.setAudioPinEnabled(false)
-pins.digitalReadPin(DigitalPin.P0)
-pins.digitalWritePin(DigitalPin.P0, 0)
-pins.analogWritePin(AnalogPin.P0, 1023)
-pins.analogReadPin(AnalogPin.P0)
-pins.map(0, 0, 1023, 0, 4)
-pins.analogSetPeriod(AnalogPin.P0, 20000)
-pins.setAudioPin(DigitalPin.P0)
-pins.servoWritePin(AnalogPin.P0, 180)
-pins.servoSetPulse(AnalogPin.P0, 1500)
+//
+// PINS (I/O)
+//
+pins.digitalWritePin(DigitalPin.P0, 1)
+pins.digitalReadPin(DigitalPin.P1)
+pins.analogWritePin(AnalogPin.P0, 500)
+pins.analogReadPin(AnalogPin.P1)
 pins.setPull(DigitalPin.P0, PinPullMode.PullUp)
-pins.analogPitch(0, 0)
-pins.setEvents(DigitalPin.P0, PinEventType.Edge)
-pins.analogSetPitchPin(AnalogPin.P0)
-pins.setMatrixWidth(DigitalPin.P0, 5)
-pins.onPulsed(DigitalPin.P0, PulseValue.High, function () {
-
-})
-pins.pulseDuration()
-pins.pulseIn(DigitalPin.P0, PulseValue.High)
-pins.i2cReadNumber(0, NumberFormat.Int8LE, false)
-pins.i2cWriteNumber(0, 0, NumberFormat.Int8LE, false)
+pins.servoWritePin(AnalogPin.P0, 90)
+pins.servoSetPulse(AnalogPin.P0, 1500)
+pins.analogSetPeriod(AnalogPin.P1, 20000)
+pins.i2cReadNumber(0x76, NumberFormat.Int8LE, false)
+pins.i2cWriteNumber(0x76, 10, NumberFormat.Int8LE, false)
 pins.spiFrequency(1000000)
-pins.spiFormat(8, 3)
-pins.spiWrite(0)
-pins.spiPins(DigitalPin.P0, DigitalPin.P0, DigitalPin.P0)
-pins.touchSetMode(TouchTarget.P0, TouchTargetMode.Capacitive)
-pins.touchSetMode(TouchTarget.P0, TouchTargetMode.Capacitive)
+pins.spiWrite(5)
+pins.pulseIn(DigitalPin.P0, PulseValue.High)
 
-//serieport blokker
-serial.writeLine("")
-serial.writeNumber(0)
-serial.writeValue("x", 0)
-serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
-
-})
-serial.writeString("")
-serial.writeNumbers([])
+//
+// SERIAL
+//
+serial.writeLine("Hello")
+serial.writeNumber(5)
+serial.writeValue("x", 10)
 serial.readLine()
-serial.readUntil(serial.delimiters(Delimiters.NewLine))
-serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
-
-})
-serial.readString()
-serial.redirect(SerialPin.P0, SerialPin.P1, 115200)
+serial.redirect(SerialPin.P0, SerialPin.P1, BaudRate.BaudRate115200)
 serial.redirectToUSB()
-serial.setTxBufferSize(32)
-serial.setRxBufferSize(32)
-serial.writeBuffer(serial.readBuffer(0))
-serial.readBuffer(0)
-serial.setWriteLinePadding(0)
-serial.setBaudRate(BaudRate.BaudRate115200)
 
-//styring blokker
-control.waitForEvent(0, 0)
-control.inBackground(function () {
-
-})
-control.millis()
+//
+// CONTROL
+//
 control.reset()
-control.waitMicros(4)
-control.raiseEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_EVT_ANY)
-control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_EVT_ANY, function () {
-
-})
+control.waitMicros(20)
+control.inBackground(function () {})
+control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_EVT_CLICK, function () {})
+control.raiseEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_EVT_CLICK)
 control.eventTimestamp()
-control.eventValue()
 control.deviceName()
 control.deviceSerialNumber()
 
-//BMP280 blokker
+//
+// BMP280 (extension)
+//
 BMP280.temperature()
 BMP280.pressure()
 BMP280.PowerOn()
 BMP280.PowerOff()
-BMP280.Address(BMP280_I2C_ADDRESS.ADDR_0x76)
 
-//128x64 Display blokker
-kitronik_VIEW128x64.controlDisplayOnOff(false)
+//
+// Kitronik VIEW 128x64 Display
+//
+kitronik_VIEW128x64.controlDisplayOnOff(true)
 kitronik_VIEW128x64.setFontSize(kitronik_VIEW128x64.FontSelection.Normal)
 kitronik_VIEW128x64.refresh()
 kitronik_VIEW128x64.invert(false)
-kitronik_VIEW128x64.show(null)
-kitronik_VIEW128x64.setPixel(0, 0)
-kitronik_VIEW128x64.plot(0)
-kitronik_VIEW128x64.drawLine(kitronik_VIEW128x64.LineDirectionSelection.horizontal, 10, 0, 0)
-kitronik_VIEW128x64.drawRect(60, 30, 0, 0)
+kitronik_VIEW128x64.setPixel(0,0)
+kitronik_VIEW128x64.drawLine(kitronik_VIEW128x64.LineDirectionSelection.horizontal, 0, 20, 10)
+kitronik_VIEW128x64.drawRect(10,10,20,20)
 kitronik_VIEW128x64.clearLine(1)
-kitronik_VIEW128x64.clearPixel(0, 0)
+kitronik_VIEW128x64.clearPixel(0,0)
 kitronik_VIEW128x64.clear()
+kitronik_VIEW128x64.show("")
 ```
 
 ```package
