@@ -515,276 +515,261 @@ function høyde () {
 
 
 ```ghost
-//
-// BASIC
-//
+input.onPinPressed(TouchPin.P0, function () {
+	
+})
+radio.onReceivedNumber(function (receivedNumber) {
+	
+})
+input.onPinReleased(TouchPin.P0, function () {
+	
+})
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+	
+})
+input.onButtonPressed(Button.A, function () {
+    if (input.buttonIsPressed(Button.A)) {
+        input.setAccelerometerRange(AcceleratorRange.OneG)
+        input.setSoundThreshold(SoundThreshold.Loud, 128)
+    } else if (input.acceleration(Dimension.X) == 0) {
+        // skjerm blokker
+        led.plot(led.brightness(), 0)
+        led.toggle(led.pointBrightness(0, 0), 0)
+        led.unplot(0, 0)
+        led.plotBarGraph(
+        0,
+        0
+        )
+        led.plotBrightness(0, 0, 255)
+        led.setBrightness(255)
+        led.enable(false)
+        led.stopAnimation()
+        led.setDisplayMode(DisplayMode.BlackAndWhite)
+    } else if (input.lightLevel() < 0) {
+        // radio blokker
+        radio.setGroup(1)
+        radio.sendNumber(0)
+        radio.sendValue("name", 0)
+        radio.sendString("")
+        radio.setTransmitPower(7)
+        radio.setTransmitSerialNumber(true)
+        radio.setFrequencyBand(0)
+        radio.raiseEvent(
+        EventBusSource.MICROBIT_ID_BUTTON_A,
+        EventBusValue.MICROBIT_EVT_ANY
+        )
+    } else if (input.pinIsPressed(TouchPin.P0)) {
+    	
+    } else if (input.isGesture(Gesture.Shake)) {
+    	
+    } else if (input.compassHeading() == 0) {
+    	
+    } else if (input.temperature() == 0) {
+    	
+    } else if (input.logoIsPressed()) {
+    	
+    } else if ("" == "") {
+    	
+    } else if (input.soundLevel() < input.magneticForce(Dimension.X) && input.rotation(Rotation.Pitch) == input.runningTime()) {
+    	
+    } else if (!(true) || false) {
+    	
+    } else if (input.runningTimeMicros() == 0 || 0 == 0) {
+        music.play(music.stringPlayable("- - - - - - - - ", 120), music.PlaybackMode.UntilDone)
+        music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
+        music.ringTone(262)
+        music.rest(music.beat(BeatFraction.Whole))
+        music.setVolume(music.volume())
+        music.stopAllSounds()
+        music.changeTempoBy(music.beat(BeatFraction.Whole))
+        music.setTempo(music.tempo())
+        music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Dadadadum), music.PlaybackMode.InBackground)
+        music.stopMelody(MelodyStopOptions.All)
+        music.play(music.builtinPlayableSoundEffect(soundExpression.giggle), music.PlaybackMode.UntilDone)
+        music.play(music.createSoundExpression(WaveShape.Sine, 5000, 0, 255, 0, 500, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
+        music.setBuiltInSpeakerEnabled(false)
+    } else if (music.isSoundPlaying()) {
+        tekst = ("" + "this".split("") + String.fromCharCode(0).charCodeAt(0)).length
+        tekst = parseFloat("123")
+        tekst = convertToText(0).charAt(0).substr(0, "this".compare("")).indexOf("")
+    } else if (led.point(0, 0)) {
+    	
+    } else if (BMP280.temperature() == BMP280.pressure()) {
+        BMP280.PowerOn()
+        BMP280.PowerOff()
+        BMP280.Address(BMP280_I2C_ADDRESS.ADDR_0x76)
+    } else if (Math.randomBoolean()) {
+        basic.showNumber(0 * 0 - Math.PI + 0 / (Math.min(Math.max(Math.sqrt(Math.round(randint(0, 10))), Math.abs(Math.constrain(0, 0, 0))), Math.map(0, 0, 1023, 0, 4)) % 1))
+    } else if ("this".includes("")) {
+    	
+    } else if ("this".isEmpty()) {
+    	
+    } else if (pins.digitalReadPin(pins.map(
+    0,
+    0,
+    1023,
+    0,
+    4
+    )) == pins.analogReadPin(AnalogPin.P0)) {
+        pins.digitalWritePin(DigitalPin.P0, 0)
+        pins.analogWritePin(AnalogPin.P0, 1023)
+        pins.analogSetPeriod(AnalogPin.P0, 20000)
+        pins.setAudioPin(DigitalPin.P0)
+        pins.setAudioPinEnabled(false)
+        pins.servoWritePin(AnalogPin.P0, 180)
+        pins.servoSetPulse(AnalogPin.P0, 1500)
+    } else if (control.millis() == 0) {
+        control.waitForEvent(control.eventValue(), 0)
+        control.reset()
+        control.waitMicros(control.eventTimestamp())
+        control.raiseEvent(
+        EventBusSource.MICROBIT_ID_BUTTON_A,
+        EventBusValue.MICROBIT_EVT_ANY
+        )
+    } else {
+        serial.writeLine(serial.readLine())
+        serial.writeNumber(0)
+        serial.writeValue("" + serial.readUntil(serial.delimiters(Delimiters.NewLine)) + serial.readString(), 0)
+        serial.writeString("" + (serial.readBuffer(0)))
+        serial.writeNumbers([0, 1])
+        serial.redirect(
+        SerialPin.P0,
+        SerialPin.P1,
+        BaudRate.BaudRate115200
+        )
+        serial.redirectToUSB()
+        serial.setTxBufferSize(32)
+        serial.setRxBufferSize(32)
+        serial.setWriteLinePadding(0)
+        serial.setBaudRate(BaudRate.BaudRate115200)
+    }
+})
+input.onGesture(Gesture.Shake, function () {
+	
+})
+function doSomething () {
+	
+}
+radio.onReceivedString(function (receivedString) {
+	
+})
+input.onSound(DetectedSound.Loud, function () {
+	
+})
+radio.onReceivedValue(function (name, value) {
+	
+})
+control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_EVT_ANY, function () {
+	
+})
+serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
+	
+})
+pins.onPulsed(DigitalPin.P0, PulseValue.High, function () {
+	
+})
+music.onEvent(MusicEvent.MelodyNotePlayed, function () {
+	
+})
+let teksttabell: string[] = []
+let tabell: number[] = []
+let tekst = 0
+// basis blokker
 basic.showNumber(0)
-basic.showString("A")
+basic.showLeds(`
+    . . . . .
+    . . . . .
+    . . # . .
+    . . . . .
+    . . . . .
+    `)
 basic.showIcon(IconNames.Heart)
-basic.showArrow(ArrowNames.North)
+basic.showString("Hello!")
 basic.clearScreen()
 basic.pause(100)
-basic.showLeds(`
-. . . . .
-. . # . .
-. # # # .
-. . # . .
-. . . . .
-`)
-basic.forever(function () {})
-
-//
-// INPUT
-//
-input.onButtonPressed(Button.A, function () {})
-input.buttonIsPressed(Button.A)
-input.onGesture(Gesture.Shake, function () {})
-input.isGesture(Gesture.LogoDown)
-input.acceleration(Dimension.X)
-input.lightLevel()
-input.temperature()
-input.rotation(Rotation.Pitch)
-input.runningTime()
-input.runningTimeMicros()
-input.onPinPressed(TouchPin.P0, function () {})
-input.pinIsPressed(TouchPin.P0)
-input.onPinReleased(TouchPin.P1, function () {})
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {})
-input.logoIsPressed()
-input.soundLevel()
-input.onSound(DetectedSound.Loud, function () {})
-input.magneticForce(Dimension.X)
-input.compassHeading()
-input.calibrateCompass()
-input.setAccelerometerRange(AcceleratorRange.OneG)
-input.setSoundThreshold(SoundThreshold.Loud, 100)
-
-//
-// MUSIC
-//
-music.playTone(262, music.beat(BeatFraction.Whole))
-music.ringTone(440)
-music.rest(music.beat(BeatFraction.Half))
-music.playMelody("C D E F G A B C5", 120)
-music.setVolume(127)
-music.volume()
-music.stopAllSounds()
-music.changeTempoBy(20)
-music.setTempo(120)
-music.beat(BeatFraction.Whole)
-music.tempo()
-music.isSoundPlaying()
-music.play(music.stringPlayable("C5 B A G", 120), music.PlaybackMode.UntilDone)
-music.play(music.tonePlayable(Note.C, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
-music.setBuiltInSpeakerEnabled(false)
-
-//
-// LED
-//
-led.plot(0,0)
-led.unplot(1,1)
-led.toggle(2,2)
-led.point(0, 0)
-led.pointBrightness(0, 0)
-led.plotBrightness(0, 0, 255)
-led.brightness()
-led.setBrightness(200)
-led.plotBarGraph(3, 10)
-led.stopAnimation()
-led.enable(true)
-
-//
-// RADIO
-//
+basic.showArrow(ArrowNames.North)
 radio.setGroup(1)
-radio.sendNumber(7)
-radio.sendString("Hi")
-radio.sendValue("x", 10)
-radio.onReceivedNumber(function (n) {})
-radio.onReceivedString(function (s) {})
-radio.onReceivedValue(function (name, value) {})
-radio.receivedPacket(RadioPacketProperty.SignalStrength)
+radio.sendNumber(0)
+radio.sendValue("name", 0)
+radio.sendString("")
 radio.setTransmitPower(7)
-radio.setFrequencyBand(0)
 radio.setTransmitSerialNumber(true)
+radio.setFrequencyBand(0)
+radio.raiseEvent(
+EventBusSource.MICROBIT_ID_BUTTON_A,
+EventBusValue.MICROBIT_EVT_ANY
+)
+loops.everyInterval(500, function () {
+	
+})
+basic.forever(function () {
+    let list: number[] = []
+    for (let index = 0; index < 4; index++) {
+    	
+    }
+    // løkker blokker
+    while (false) {
+    	
+    }
+    for (let verdi of tabell) {
+    	
+    }
+    for (let indeks = 0; indeks <= 4; indeks++) {
+    	
+    }
+    for (let index = 0; index < 5; index++) {
+    	
+    }
+    for (let index = 0; index < radio.receivedPacket(RadioPacketProperty.SignalStrength); index++) {
+        continue;
+break;
+    }
+    // Logikk blokker
+    if (true) {
+    	
+    }
+    if (true) {
+    	
+    } else {
+    	
+    }
+    kitronik_VIEW128x64.controlDisplayOnOff(kitronik_VIEW128x64.onOff(false))
+    kitronik_VIEW128x64.setFontSize(kitronik_VIEW128x64.FontSelection.Normal)
+    kitronik_VIEW128x64.refresh()
+    kitronik_VIEW128x64.invert(kitronik_VIEW128x64.onOff(false))
+    kitronik_VIEW128x64.show(0)
+    kitronik_VIEW128x64.setPixel(0, 0)
+    kitronik_VIEW128x64.plot(0)
+    kitronik_VIEW128x64.drawLine(kitronik_VIEW128x64.LineDirectionSelection.horizontal, 10, 0, 0)
+    kitronik_VIEW128x64.drawRect(60, 30, 0, 0)
+    kitronik_VIEW128x64.clearLine(1)
+    kitronik_VIEW128x64.clearPixel(0, 0)
+    kitronik_VIEW128x64.clear()
+    // funksjoner blokker
+    doSomething()
+    // tabeller blokker
+    tabell = [tabell.length, 2, 3]
+    teksttabell = ["ei / en / ett", "b", "c"]
+    tabell[list.removeAt(list._pickRandom())] = list.shift()
+    tabell.push(tabell[list.pop()])
+    tabell.pop()
+    tabell = []
+    tabell[0] = 0
+    list.push(list.unshift(0))
+    list.pop()
+    tabell.shift()
+    list.unshift(0)
+    list.insertAt(0, list.indexOf(0))
+    list.removeAt(0)
+    list.reverse()
+})
+basic.forever(function () {
+	
+})
+control.inBackground(function () {
+	
+})
 
-//
-// LOOPS (control)
-//
-while (true) {}
-for (let i = 0; i < 5; i++) {}
-for (let value of [1,2,3]) {}
-loops.everyInterval(500, function () {})
-
-//
-// LOGIC
-//
-if (true) {}
-if (true) {} else {}
-true && false
-true || false
-!true
-0 == 0
-0 != 1
-0 < 1
-0 <= 1
-0 > 1
-0 >= 1
-"" == ""
-"" != ""
-
-//
-// VARIABLES
-//
-let numberVar = 0
-let stringVar = ""
-let booleanVar = false
-numberVar += 1
-stringVar = "text"
-booleanVar = true
-
-//
-// MATH
-//
-1 + 1
-1 - 1
-1 * 1
-1 / 1
-1 % 2
-Math.max(1, 2)
-Math.min(1, 2)
-Math.abs(-5)
-Math.sqrt(16)
-Math.round(1.2)
-Math.floor(1.8)
-Math.ceil(1.1)
-Math.trunc(1.7)
-Math.randomBoolean()
-randint(0, 10)
-Math.map(5, 0, 10, 0, 100)
-Math.constrain(5, 0, 10)
-Math.PI
-
-//
-// FUNCTIONS
-//
-function myFunction() {}
-myFunction()
-
-//
-// LISTS (arrays)
-//
-let list = [1, 2, 3]
-list.push(4)
-list.pop()
-list.insertAt(0, 99)
-list.removeAt(1)
-list.length
-list.reverse()
-list.indexOf(2)
-
-//
-// TEXT
-//
-"Hello".charAt(0)
-"Hello".substr(0, 2)
-"Hi" + "There"
-parseInt("5")
-"abc".compare("abd")
-"abc".length
-
-//
-// GAME
-//
-let sprite = game.createSprite(2,2)
-sprite.move(1)
-sprite.turn(Direction.Right, 45)
-sprite.change(LedSpriteProperty.X, 1)
-sprite.set(LedSpriteProperty.Y, 4)
-sprite.get(LedSpriteProperty.X)
-sprite.ifOnEdgeBounce()
-sprite.isDeleted()
-game.addScore(1)
-game.score()
-game.setScore(0)
-game.gameOver()
-game.startCountdown(5000)
-
-//
-// IMAGES
-//
-let img = images.createImage(`
-. # . # .
-. . # . .
-# # # # #
-. . # . .
-. # . # .
-`)
-img.showImage(0)
-img.scrollImage(1, 200)
-images.iconImage(IconNames.Heart)
-
-//
-// PINS (I/O)
-//
-pins.digitalWritePin(DigitalPin.P0, 1)
-pins.digitalReadPin(DigitalPin.P1)
-pins.analogWritePin(AnalogPin.P0, 500)
-pins.analogReadPin(AnalogPin.P1)
-pins.setPull(DigitalPin.P0, PinPullMode.PullUp)
-pins.servoWritePin(AnalogPin.P0, 90)
-pins.servoSetPulse(AnalogPin.P0, 1500)
-pins.analogSetPeriod(AnalogPin.P1, 20000)
-pins.i2cReadNumber(0x76, NumberFormat.Int8LE, false)
-pins.i2cWriteNumber(0x76, 10, NumberFormat.Int8LE, false)
-pins.spiFrequency(1000000)
-pins.spiWrite(5)
-pins.pulseIn(DigitalPin.P0, PulseValue.High)
-
-//
-// SERIAL
-//
-serial.writeLine("Hello")
-serial.writeNumber(5)
-serial.writeValue("x", 10)
-serial.readLine()
-serial.redirect(SerialPin.P0, SerialPin.P1, BaudRate.BaudRate115200)
-serial.redirectToUSB()
-
-//
-// CONTROL
-//
-control.reset()
-control.waitMicros(20)
-control.inBackground(function () {})
-control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_EVT_CLICK, function () {})
-control.raiseEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_EVT_CLICK)
-control.eventTimestamp()
-control.deviceName()
-control.deviceSerialNumber()
-
-//
-// BMP280 (extension)
-//
-BMP280.temperature()
-BMP280.pressure()
-BMP280.PowerOn()
-BMP280.PowerOff()
-
-//
-// Kitronik VIEW 128x64 Display
-//
-kitronik_VIEW128x64.controlDisplayOnOff(true)
-kitronik_VIEW128x64.setFontSize(kitronik_VIEW128x64.FontSelection.Normal)
-kitronik_VIEW128x64.refresh()
-kitronik_VIEW128x64.invert(false)
-kitronik_VIEW128x64.setPixel(0,0)
-kitronik_VIEW128x64.drawLine(kitronik_VIEW128x64.LineDirectionSelection.horizontal, 0, 20, 10)
-kitronik_VIEW128x64.drawRect(10,10,20,20)
-kitronik_VIEW128x64.clearLine(1)
-kitronik_VIEW128x64.clearPixel(0,0)
-kitronik_VIEW128x64.clear()
-kitronik_VIEW128x64.show("")
 ```
 
 ```package
