@@ -7,7 +7,8 @@
         "radio": "*",
         "microphone": "*",
         "BMP280": "github:makecode-extensions/bmp280#v1.1.0",
-        "pxt-kitronik-128x64display": "github:kitronikltd/pxt-kitronik-128x64display#v0.4.1"
+        "pxt-kitronik-128x64display": "github:kitronikltd/pxt-kitronik-128x64display#v0.4.1",
+        "microbit": "*"
     },
     "files": [
         "main.ts",
