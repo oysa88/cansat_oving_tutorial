@@ -12,6 +12,7 @@
     "files": [
         "main.ts",
         "README.md",
+        "pallette.ts",
         "tutorial.md",
         "tutorial-info-cache.json",
         "_locales/nb/tutorial.md"
