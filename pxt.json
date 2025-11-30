@@ -4,7 +4,6 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "microbit": "*",
         "radio": "*",
         "microphone": "*",
         "BMP280": "github:makecode-extensions/bmp280#v1.1.0",
